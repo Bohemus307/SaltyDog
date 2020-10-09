@@ -1,13 +1,25 @@
+const SerialPort = require('serialport')
 const Raspi = require('raspi-io').RaspiIO;
 const five = require('johnny-five');
 const board = new five.Board({
-  io: new Raspi()
+  io: new Raspi({ enableSerial: true })
 });
 
 board.on('ready', () => {
+  var sp = new SerialPort("/dev/ttyUSB0", {
+    baudRate: 9600
+  });
 
-  // Create an Led on pin 7 (GPIO4) on P1 and strobe it on/off
-  // Optionally set the speed; defaults to 100ms
-  (new five.Led('P1-7')).strobe();
+  sp.on("open", function() {
+    console.log("Port is open!");
+
+    // Once the port is open, you may read or write to it.
+    sp.on("data", function(data) {
+      console.log("Received: ", data);
+    });
+
+    setInterval(function(){ sp.write(new Buffer.from(["0120000003"])) }, 5000);
+  });
 
 });
+
