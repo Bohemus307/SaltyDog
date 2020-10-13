@@ -10,7 +10,9 @@ const dev = {
   db: {
     host: process.env.DEV_DB_HOST || 'localhost',
     port: parseInt(process.env.DEV_DB_PORT, 10) || 5432,
-    database: process.env.DEV_DB_NAME || 'SaltyDogDB',
+    database: process.env.DEV_DB_NAME || 'saltyDog1',
+    user: process.env.USER,
+    password:process.env.PGPASSWORD,
   },
 };
 
@@ -21,7 +23,7 @@ const prod = {
   db: {
     host: process.env.PROD_DB_HOST || 'database',
     port: parseInt(process.env.TEST_DB_PORT, 10) || 5432,
-    database: process.env.TEST_DB_NAME || 'SaltyDogDB',
+    database: process.env.TEST_DB_NAME || 'saltyDog1',
   },
 };
 

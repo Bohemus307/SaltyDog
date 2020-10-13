@@ -21,7 +21,7 @@ const readings = []; // Store readings
 app.get("/data", (req, res, next) => { 
   console.log('request made')
 
-  const sensor = spawn('python', ['-u', path.join(__dirname, 'uart.py')]);
+  const sensor = spawn('python', ['-u', path.join(__dirname, '../Sensors/uart.py')]);
 
   sensor.stdout.on('data', function(data) {
       console.log('i ran');
