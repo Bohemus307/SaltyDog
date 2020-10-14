@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
+const socketIO = require( 'socket.io' );
 const config = require('../config.js');
 const { exec, spawn, execFile } = require('child_process');
 
@@ -32,11 +33,11 @@ app.get("/data", (req, res, next) => {
       console.log('data:', readings);
   });
 
-  sensor.on('close', (code) => {
-    console.log(`child process close all stdio with code ${code}`);
-    // send data to browser
-    res.send(readings)
-  });
+  // sensor.on('close', (code) => {
+  //   console.log(`child process close all stdio with code ${code}`);
+  //   // send data to browser
+  //   res.send(readings)
+  // });
   
 }); 
 
