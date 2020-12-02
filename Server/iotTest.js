@@ -11,7 +11,7 @@ var device = awsIot.device({
   clientId: 'SaltyDog-Policy'
 });
 // PH Sensor script
-const sensor = spawn('python', ['-u', path.join(__dirname, '../Sensors/uart.py')]);
+ sensor = spawn('python', ['-u', path.join(__dirname, '../Sensors/uart.py')]);const
 
 var message = '';
 var topic = "topic_1";

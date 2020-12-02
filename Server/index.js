@@ -33,11 +33,11 @@ app.get("/data", (req, res, next) => {
       console.log('data:', readings);
   });
 
-  // sensor.on('close', (code) => {
-  //   console.log(`child process close all stdio with code ${code}`);
-  //   // send data to browser
-  //   res.send(readings)
-  // });
+  sensor.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`);
+    // send data to browser
+    res.send({ data: readings })
+  });
   
 }); 
 
